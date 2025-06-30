@@ -37,6 +37,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {item}
                 </button>
               ))}
+              <a
+                href="/Resume%202025%20April%20ori%20(1).pdf"
+                download
+                className="text-white/80 hover:text-white transition-colors duration-200 border border-blue-400 rounded px-3 py-1 ml-4"
+              >
+                Download Resume
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -61,6 +68,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     {item}
                   </button>
                 ))}
+                <a
+                  href="/Resume%202025%20April%20ori%20(1).pdf"
+                  download
+                  className="text-white/80 hover:text-white transition-colors duration-200 border border-blue-400 rounded px-3 py-1"
+                >
+                  Download Resume
+                </a>
               </div>
             </div>
           )}
