@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, X, Github, Linkedin, Mail, Globe } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Globe, Download } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,10 +38,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </button>
               ))}
               <a
-                href="/Resume%202025%20April%20ori%20(1).pdf"
+                href="/Resume%202025%20April%20ori.pdf"
                 download
-                className="text-white/80 hover:text-white transition-colors duration-200 border border-blue-400 rounded px-3 py-1 ml-4"
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold shadow-lg hover:from-indigo-500 hover:to-blue-500 hover:scale-105 transition-all duration-200 border-none rounded-full px-5 py-2 ml-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                aria-label="Download Resume"
               >
+                <Download size={18} />
                 Download Resume
               </a>
             </div>
@@ -69,10 +71,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </button>
                 ))}
                 <a
-                  href="/Resume%202025%20April%20ori%20(1).pdf"
+                  href="/Resume%202025%20April%20ori.pdf"
                   download
-                  className="text-white/80 hover:text-white transition-colors duration-200 border border-blue-400 rounded px-3 py-1"
+                  className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold shadow-lg hover:from-indigo-500 hover:to-blue-500 hover:scale-105 transition-all duration-200 border-none rounded-full px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  aria-label="Download Resume"
                 >
+                  <Download size={18} />
                   Download Resume
                 </a>
               </div>
