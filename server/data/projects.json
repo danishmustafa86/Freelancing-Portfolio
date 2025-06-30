@@ -1,0 +1,141 @@
+[
+  {
+    "id": "1",
+    "title": "AI-Powered Document Analysis System",
+    "description": "Advanced document processing system using LangChain and RAG architecture. Extracts insights from complex documents with 95% accuracy using custom NLP models and vector databases.",
+    "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "Python",
+      "LangChain",
+      "RAG",
+      "OpenAI",
+      "Vector DB"
+    ],
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com/danishmustafa86",
+    "category": "ai-apps",
+    "featured": true,
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": "2",
+    "title": "LangGraph Multi-Agent System",
+    "description": "Sophisticated multi-agent AI system built with LangGraph for complex workflow automation. Handles multiple AI agents working collaboratively on business processes.",
+    "image": "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "LangGraph",
+      "LangChain",
+      "Python",
+      "AgenticAI",
+      "Graph DB"
+    ],
+    "liveUrl": "https://example.com",
+    "category": "ai-apps",
+    "featured": true,
+    "createdAt": "2024-02-01"
+  },
+  {
+    "id": "3",
+    "title": "Next.js E-commerce Platform",
+    "description": "Full-stack e-commerce solution with modern React architecture, server-side rendering, and optimized performance. Features advanced search, payment integration, and admin dashboard.",
+    "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Stripe"
+    ],
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com/danishmustafa86",
+    "category": "web-development",
+    "featured": true,
+    "createdAt": "2024-02-15"
+  },
+  {
+    "id": "4",
+    "title": "Crew.ai Task Automation System",
+    "description": "Intelligent task automation platform using Crew.ai for coordinating multiple AI agents. Streamlines complex business workflows with autonomous decision-making capabilities.",
+    "image": "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "Crew.ai",
+      "Python",
+      "LangChain",
+      "FastAPI",
+      "PostgreSQL"
+    ],
+    "category": "ai-apps",
+    "featured": true,
+    "createdAt": "2024-03-01"
+  },
+  {
+    "id": "5",
+    "title": "React Analytics Dashboard",
+    "description": "Comprehensive analytics dashboard with real-time data visualization, interactive charts, and performance metrics. Built with modern React patterns and optimized for large datasets.",
+    "image": "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "D3.js",
+      "Chart.js",
+      "Python API"
+    ],
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com/danishmustafa86",
+    "category": "web-development",
+    "featured": false,
+    "createdAt": "2024-03-15"
+  },
+  {
+    "id": "6",
+    "title": "LeetCode Problem Solver AI",
+    "description": "AI-powered system that analyzes and solves LeetCode problems using advanced algorithms. Provides step-by-step explanations and multiple solution approaches for educational purposes.",
+    "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "Python",
+      "OpenAI",
+      "Algorithm Analysis",
+      "FastAPI",
+      "React"
+    ],
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com/danishmustafa86",
+    "category": "ai-apps",
+    "featured": true,
+    "createdAt": "2024-04-01"
+  },
+  {
+    "id": "7",
+    "title": "Graph Database RAG System",
+    "description": "Advanced RAG implementation using graph databases for enhanced context understanding. Leverages Neo4j and vector embeddings for superior information retrieval and generation.",
+    "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "Neo4j",
+      "LangChain",
+      "Vector DB",
+      "Python",
+      "GraphQL"
+    ],
+    "category": "ai-apps",
+    "featured": false,
+    "createdAt": "2024-04-15"
+  },
+  {
+    "id": "8",
+    "title": "Competitive Programming Trainer",
+    "description": "Interactive platform for learning data structures and algorithms. Features problem categorization, solution explanations, and progress tracking for competitive programming preparation.",
+    "image": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Algorithm Visualization",
+      "TypeScript"
+    ],
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com/danishmustafa86",
+    "category": "web-development",
+    "featured": false,
+    "createdAt": "2024-05-01"
+  }
+]
