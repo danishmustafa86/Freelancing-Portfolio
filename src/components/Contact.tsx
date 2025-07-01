@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Globe, Linkedin, Github, Clock, Star, Zap, MessageCircle } from 'lucide-react';
 import { submitContactForm } from '../api/contact';
+import { contactInfo, socialLinks, projectTypes } from '../data/contactData';
+import ContactForm from './ContactForm';
+import ProjectTypeCard from './ProjectTypeCard';
+import ContactInfoCard from './ContactInfoCard';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -33,53 +37,6 @@ const Contact: React.FC = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'danishmustafa86@gmail.com',
-      href: 'mailto:danishmustafa86@gmail.com',
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: 'Faisalabad, Pakistan',
-      href: '#',
-      gradient: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Globe,
-      label: 'Portfolio',
-      value: 'danishmustafa786.vercel.app',
-      href: 'https://danishmustafa786.vercel.app/',
-      gradient: 'from-purple-500 to-pink-500'
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      value: 'danishmustafa86',
-      href: 'https://github.com/danishmustafa86',
-      gradient: 'from-gray-600 to-gray-800'
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      value: 'danish-mustafa',
-      href: 'https://linkedin.com/in/danish-mustafa',
-      gradient: 'from-blue-600 to-blue-800'
-    }
-  ];
-
-  const projectTypes = [
-    { icon: Zap, title: 'AI & ML Solutions', description: 'Custom AI applications and automation' },
-    { icon: Globe, title: 'Web Development', description: 'Modern, scalable web applications' },
-    { icon: MessageCircle, title: 'Technical Mentorship', description: 'Training and skill development' },
-  ];
-
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Elements */}
@@ -109,134 +66,13 @@ const Contact: React.FC = () => {
         {/* Project Types */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           {projectTypes.map((type, index) => (
-            <div
-              key={index}
-              className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-center"
-            >
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-xl w-fit mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <type.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-white font-bold text-lg mb-2">{type.title}</h3>
-              <p className="text-white/70">{type.description}</p>
-            </div>
+            <ProjectTypeCard key={index} icon={type.icon} title={type.title} description={type.description} />
           ))}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Enhanced Contact Form */}
-          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-            <div className="flex items-center mb-6">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-xl mr-4">
-                <Send className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white">Send Message</h3>
-            </div>
-            
-            {status === 'success' && (
-              <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-2xl p-6 mb-6 flex items-center">
-                <CheckCircle className="w-6 h-6 text-green-400 mr-3" />
-                <div>
-                  <div className="text-green-300 font-semibold">Message sent successfully!</div>
-                  <div className="text-green-300/80 text-sm">I'll get back to you within 24 hours.</div>
-                </div>
-              </div>
-            )}
-
-            {status === 'error' && (
-              <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-500/30 rounded-2xl p-6 mb-6 flex items-center">
-                <AlertCircle className="w-6 h-6 text-red-400 mr-3" />
-                <div>
-                  <div className="text-red-300 font-semibold">Failed to send message</div>
-                  <div className="text-red-300/80 text-sm">{errorMessage}</div>
-                </div>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-white font-semibold mb-3">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 hover:bg-white/15"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-white font-semibold mb-3">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 hover:bg-white/15"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-white font-semibold mb-3">
-                  Project Type
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 hover:bg-white/15"
-                  placeholder="AI Project / Web Development / Mentorship / Other"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-white font-semibold mb-3">
-                  Project Details *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 transition-all duration-300 resize-none hover:bg-white/15"
-                  placeholder="Tell me about your project goals, timeline, budget, and any specific requirements..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center hover:scale-105 hover:shadow-xl relative overflow-hidden"
-              >
-                {status === 'loading' ? (
-                  <>
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
-                    Sending Message...
-                  </>
-                ) : (
-                  <>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                    <span className="relative z-10">Send Message</span>
-                    <Send className="ml-3 w-6 h-6 relative z-10" />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+          <ContactForm />
 
           {/* Enhanced Contact Info */}
           <div className="space-y-8">
@@ -247,21 +83,7 @@ const Contact: React.FC = () => {
               </h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <a
-                    key={index}
-                    href={info.href}
-                    target={info.href.startsWith('http') ? '_blank' : undefined}
-                    rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="group flex items-center space-x-4 hover:bg-white/10 p-4 rounded-2xl transition-all duration-300 hover:scale-105"
-                  >
-                    <div className={`bg-gradient-to-r ${info.gradient} p-4 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white/60 text-sm font-medium">{info.label}</p>
-                      <p className="text-white font-semibold text-lg">{info.value}</p>
-                    </div>
-                  </a>
+                  <ContactInfoCard key={index} icon={info.icon} label={info.label} value={info.value} href={info.href} gradient={info.gradient} />
                 ))}
               </div>
             </div>

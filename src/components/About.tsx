@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code2, Zap, Brain, Target, Trophy, Users, BookOpen, Globe, Award, Star, Lightbulb } from 'lucide-react';
+import { skills, highlights, achievements, techStack } from '../data/aboutData';
 
 const About: React.FC = () => {
   const skills = [
@@ -27,7 +28,7 @@ const About: React.FC = () => {
     {
       icon: Trophy,
       title: 'Competitive Programming Champion',
-      description: 'Solved 400+ LeetCode problems. Harvard CS50x Puzzle Day winner (9/9 in 2025, 8/9 in 2024). Proven problem-solving mastery.',
+      description: `Solved 400+ LeetCode problems. Harvard CS50x Puzzle Day winner (9/9 in ${new Date().getFullYear()}, 8/9 in ${new Date().getFullYear() - 1}). Proven problem-solving mastery.`,
       gradient: 'from-yellow-500 to-orange-500'
     },
     {
@@ -39,7 +40,7 @@ const About: React.FC = () => {
   ];
 
   const achievements = [
-    { icon: Award, label: 'Harvard CS50x Winner', value: '2024 & 2025' },
+    { icon: Award, label: 'Harvard CS50x Winner', value: `${new Date().getFullYear() - 1} & ${new Date().getFullYear()}` },
     { icon: Star, label: 'LeetCode Problems', value: '400+ Solved' },
     { icon: Users, label: 'Students Trained', value: '200+ Globally' },
     { icon: Trophy, label: 'Hackathons Won', value: '15+ International' },

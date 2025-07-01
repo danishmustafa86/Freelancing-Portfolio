@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Filter, Star, Calendar, TrendingUp, Award } from 'lucide-react';
 import { Project } from '../types';
 import { fetchProjects } from '../api/projects';
+import ProjectCard from './ProjectCard';
+import ProjectFilterButton from './ProjectFilterButton';
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>('all');
+  const [error, setError] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: Star },
@@ -22,7 +25,7 @@ const Projects: React.FC = () => {
         const data = await fetchProjects();
         setProjects(data);
       } catch (error) {
-        console.error('Failed to fetch projects:', error);
+        setError('Failed to fetch projects. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -44,6 +47,21 @@ const Projects: React.FC = () => {
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mx-auto"></div>
             <p className="text-white/80 mt-6 text-lg">Loading amazing projects...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <div className="bg-red-500/20 border border-red-500/30 rounded-2xl p-8 max-w-md mx-auto">
+              <p className="text-red-300 text-lg font-semibold mb-2">{error}</p>
+              <p className="text-red-200 text-sm">Check your internet connection or try again later.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -98,136 +116,21 @@ const Projects: React.FC = () => {
         {/* Enhanced Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
-            <button
+            <ProjectFilterButton
               key={category.id}
-              onClick={() => setFilter(category.id)}
-              className={`group px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center hover:scale-105 ${
-                filter === category.id
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/20'
-              }`}
-            >
-              <category.icon className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              {category.label}
-            </button>
+              id={category.id}
+              label={category.label}
+              icon={category.icon}
+              active={filter === category.id}
+              onClick={setFilter}
+            />
           ))}
         </div>
 
         {/* Enhanced Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Featured Badge */}
-              {project.featured && (
-                <div className="absolute top-4 right-4 z-10">
-                  <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center">
-                    <Star className="w-3 h-3 mr-1" fill="currentColor" />
-                    Featured
-                  </div>
-                </div>
-              )}
-
-              {/* Project Image */}
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                
-                {/* Project Links Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/20 backdrop-blur-sm p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                    >
-                      <ExternalLink className="w-6 h-6 text-white" />
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/20 backdrop-blur-sm p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
-                    >
-                      <Github className="w-6 h-6 text-white" />
-                    </a>
-                  )}
-                </div>
-
-                {/* Date */}
-                <div className="absolute bottom-4 left-4 flex items-center text-white/80 text-sm">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {new Date(project.createdAt).toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    year: 'numeric' 
-                  })}
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
-                  {project.title}
-                </h3>
-                
-                <p className="text-white/80 mb-4 line-clamp-3 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 4).map((tech, index) => (
-                    <span
-                      key={index}
-                      className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 px-3 py-1 rounded-full text-xs border border-blue-500/30 hover:scale-105 transition-transform duration-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                    <span className="text-white/60 text-xs px-3 py-1">
-                      +{project.technologies.length - 4} more
-                    </span>
-                  )}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-3">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center justify-center hover:scale-105"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center justify-center border border-white/20 hover:scale-105"
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 

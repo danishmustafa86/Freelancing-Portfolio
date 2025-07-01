@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </button>
               ))}
               <a
-                href="/Resume%202025%20April%20ori.pdf"
+                href="/Resume.pdf"
                 download
                 className="group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-lg hover:from-purple-500 hover:to-blue-500 hover:scale-105 transition-all duration-300 border-none rounded-2xl px-6 py-3 ml-4 focus:outline-none focus:ring-2 focus:ring-blue-400 relative overflow-hidden"
                 aria-label="Download Resume"
@@ -88,7 +88,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </button>
                 ))}
                 <a
-                  href="/Resume%202025%20April%20ori.pdf"
+                  href="/Resume.pdf"
                   download
                   className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-200 border-none rounded-2xl px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 w-fit"
                   aria-label="Download Resume"
@@ -148,11 +148,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <h3 className="text-white font-semibold mb-4">Connect</h3>
               <div className="space-y-3 mb-6">
                 <a 
-                  href="mailto:danishmustafa86@gmail.com" 
+                  href="mailto:danishjajja86@gmail.com" 
                   className="flex items-center text-white/70 hover:text-white transition-colors duration-200"
                 >
                   <Mail className="w-4 h-4 mr-2" />
-                  danishmustafa86@gmail.com
+                  danishjajja86@gmail.com
                 </a>
                 <div className="flex items-center text-white/70">
                   <Globe className="w-4 h-4 mr-2" />
@@ -185,7 +185,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <Globe size={20} className="text-white" />
                 </a>
                 <a 
-                  href="mailto:danishmustafa86@gmail.com" 
+                  href="mailto:danishjajja86@gmail.com" 
                   className="bg-white/10 hover:bg-white/20 p-3 rounded-xl transition-all duration-300 hover:scale-110"
                 >
                   <Mail size={20} className="text-white" />
@@ -197,7 +197,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Bottom Section */}
           <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-white/60 text-sm mb-4 md:mb-0">
-              &copy; 2024 Danish Mustafa. All rights reserved. Built with passion and precision.
+              &copy; {new Date().getFullYear()} Danish Mustafa. All rights reserved. Built with passion and precision.
             </div>
             <div className="flex items-center space-x-4 text-white/60 text-sm">
               <span>Made with React & TypeScript</span>
